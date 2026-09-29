@@ -1,0 +1,4794 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>One Piece - Grand Adventure</title>
+
+
+    <style>
+
+        /* =========================================================
+           RESET
+        ========================================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        html,
+        body {
+
+            width: 100%;
+            height: 100%;
+
+            overflow: hidden;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            background: #050b16;
+
+        }
+
+
+        button {
+
+            border: none;
+
+            cursor: pointer;
+
+            font-family: inherit;
+
+        }
+
+
+        /* =========================================================
+           VARIABLES
+        ========================================================= */
+
+        :root {
+
+            --amarillo: #ffd54a;
+            --naranja: #ff7b00;
+            --rojo: #ff304f;
+            --azul: #00bfff;
+            --azulOscuro: #061426;
+            --verde: #35e67b;
+            --blanco: #ffffff;
+
+        }
+
+
+        /* =========================================================
+           PANTALLA DE INICIO
+        ========================================================= */
+
+        #inicio {
+
+            position: fixed;
+
+            inset: 0;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            overflow: hidden;
+
+            z-index: 1000;
+
+        }
+
+
+        #inicioFondo {
+
+            position: absolute;
+
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            z-index: -5;
+
+            transform: scale(1.08);
+
+            animation:
+                fondoZoom 15s infinite alternate;
+
+        }
+
+
+        @keyframes fondoZoom {
+
+            from {
+                transform: scale(1.08);
+            }
+
+            to {
+                transform: scale(1.18);
+            }
+
+        }
+
+
+        #inicio::after {
+
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    rgba(0, 170, 255, .15),
+                    rgba(0, 0, 0, .85)
+                );
+
+            z-index: -4;
+
+        }
+
+
+        /* =========================================================
+           LOGO PRINCIPAL
+        ========================================================= */
+
+        .inicio-contenido {
+
+            width: min(900px, 92%);
+
+            text-align: center;
+
+            padding: 45px 25px;
+
+            background:
+                rgba(0, 0, 0, .65);
+
+            backdrop-filter:
+                blur(10px);
+
+            border:
+                2px solid
+                rgba(255, 213, 74, .7);
+
+            border-radius: 30px;
+
+            box-shadow:
+                0 0 70px
+                rgba(0, 180, 255, .25);
+
+            animation:
+                aparecer .8s ease;
+
+        }
+
+
+        @keyframes aparecer {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    translateY(40px)
+                    scale(.9);
+
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    translateY(0)
+                    scale(1);
+
+            }
+
+        }
+
+
+        .titulo-principal {
+
+            font-size:
+                clamp(55px, 11vw, 120px);
+
+            font-weight: 900;
+
+            color:
+                var(--amarillo);
+
+            letter-spacing:
+                5px;
+
+            text-shadow:
+
+                5px 5px 0 #9c1b00,
+
+                0 0 20px #ff9800,
+
+                0 0 50px #ff6500;
+
+            animation:
+                tituloFlotar 2.5s ease-in-out infinite;
+
+        }
+
+
+        @keyframes tituloFlotar {
+
+            0%,
+            100% {
+
+                transform:
+                    translateY(0);
+
+            }
+
+            50% {
+
+                transform:
+                    translateY(-8px);
+
+            }
+
+        }
+
+
+        .subtitulo {
+
+            color: white;
+
+            font-size:
+                clamp(18px, 3vw, 28px);
+
+            margin:
+                10px 0 25px;
+
+        }
+
+
+        .descripcion {
+
+            max-width: 650px;
+
+            margin: auto;
+
+            color: #d9e4ef;
+
+            line-height: 1.7;
+
+            margin-bottom: 30px;
+
+        }
+
+
+        /* =========================================================
+           BOTONES
+        ========================================================= */
+
+        .boton-principal {
+
+            padding:
+                17px 45px;
+
+            border-radius:
+                50px;
+
+            color:
+                #161616;
+
+            font-size:
+                19px;
+
+            font-weight:
+                900;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #ffe66d,
+                    #ff8a00
+                );
+
+            box-shadow:
+                0 8px 30px
+                rgba(255, 136, 0, .35);
+
+            transition:
+                .25s;
+
+        }
+
+
+        .boton-principal:hover {
+
+            transform:
+                translateY(-5px)
+                scale(1.05);
+
+            box-shadow:
+                0 12px 40px
+                rgba(255, 180, 0, .55);
+
+        }
+
+
+        .controles-info {
+
+            margin-top: 25px;
+
+            display: flex;
+
+            justify-content: center;
+
+            gap: 10px;
+
+            flex-wrap: wrap;
+
+        }
+
+
+        .tecla {
+
+            padding:
+                7px 12px;
+
+            border:
+                1px solid
+                rgba(255,255,255,.25);
+
+            border-radius:
+                8px;
+
+            background:
+                rgba(255,255,255,.08);
+
+            color:
+                #ddd;
+
+            font-size:
+                13px;
+
+        }
+
+
+        /* =========================================================
+           JUEGO
+        ========================================================= */
+
+        #juego {
+
+            position: relative;
+
+            width: 100vw;
+            height: 100vh;
+
+            display: none;
+
+            overflow: hidden;
+
+            background:
+                #168fc1;
+
+        }
+
+
+        /* =========================================================
+           CAPAS DEL FONDO
+        ========================================================= */
+
+        .capa-fondo {
+
+            position: absolute;
+
+            inset: 0;
+
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            pointer-events: none;
+
+        }
+
+
+        #fondoJuego {
+
+            z-index: -20;
+
+        }
+
+
+        .capa-mar {
+
+            position: absolute;
+
+            left: 0;
+            right: 0;
+
+            bottom: 0;
+
+            height: 35%;
+
+            background:
+                linear-gradient(
+                    rgba(0,130,190,.15),
+                    rgba(0,54,110,.65)
+                );
+
+            animation:
+                marMovimiento 5s infinite alternate;
+
+            z-index: -15;
+
+        }
+
+
+        @keyframes marMovimiento {
+
+            from {
+
+                transform:
+                    translateY(0);
+
+            }
+
+            to {
+
+                transform:
+                    translateY(15px);
+
+            }
+
+        }
+
+
+        /* =========================================================
+           NUBES
+        ========================================================= */
+
+        .nube {
+
+            position: absolute;
+
+            width: 190px;
+            height: 55px;
+
+            background:
+                rgba(255,255,255,.75);
+
+            border-radius:
+                50px;
+
+            filter:
+                blur(2px);
+
+            z-index: -10;
+
+            animation:
+                moverNube linear infinite;
+
+        }
+
+
+        .nube::before,
+        .nube::after {
+
+            content: "";
+
+            position: absolute;
+
+            background: inherit;
+
+            border-radius:
+                50%;
+
+        }
+
+
+        .nube::before {
+
+            width: 85px;
+            height: 85px;
+
+            left: 30px;
+
+            top: -45px;
+
+        }
+
+
+        .nube::after {
+
+            width: 105px;
+            height: 105px;
+
+            right: 20px;
+
+            top: -55px;
+
+        }
+
+
+        .nube1 {
+
+            top: 10%;
+
+            left: -250px;
+
+            animation-duration:
+                28s;
+
+        }
+
+
+        .nube2 {
+
+            top: 25%;
+
+            left: -300px;
+
+            transform:
+                scale(.65);
+
+            animation-duration:
+                38s;
+
+            animation-delay:
+                5s;
+
+        }
+
+
+        .nube3 {
+
+            top: 17%;
+
+            left: -300px;
+
+            transform:
+                scale(.45);
+
+            animation-duration:
+                45s;
+
+            animation-delay:
+                10s;
+
+        }
+
+
+        @keyframes moverNube {
+
+            from {
+                left: -350px;
+            }
+
+            to {
+                left: 110%;
+            }
+
+        }
+
+
+        /* =========================================================
+           HUD
+        ========================================================= */
+
+        #hud {
+
+            position: absolute;
+
+            top: 15px;
+
+            left: 15px;
+            right: 15px;
+
+            display:
+                flex;
+
+            justify-content:
+                space-between;
+
+            align-items:
+                flex-start;
+
+            gap: 12px;
+
+            z-index: 100;
+
+        }
+
+
+        .hud-grupo {
+
+            display:
+                flex;
+
+            gap: 8px;
+
+            flex-wrap:
+                wrap;
+
+        }
+
+
+        .hud-box {
+
+            min-width:
+                120px;
+
+            padding:
+                9px 13px;
+
+            background:
+                rgba(3, 12, 25, .78);
+
+            backdrop-filter:
+                blur(7px);
+
+            border:
+                1px solid
+                rgba(255,213,74,.55);
+
+            border-radius:
+                13px;
+
+            color:
+                white;
+
+            font-weight:
+                bold;
+
+            font-size:
+                14px;
+
+        }
+
+
+        .hud-box strong {
+
+            color:
+                var(--amarillo);
+
+        }
+
+
+        /* =========================================================
+           BARRA DE EXPERIENCIA
+        ========================================================= */
+
+        #experiencia-contenedor {
+
+            position: absolute;
+
+            top: 75px;
+
+            left: 50%;
+
+            transform:
+                translateX(-50%);
+
+            width:
+                min(500px, 60%);
+
+            height:
+                13px;
+
+            background:
+                rgba(0,0,0,.55);
+
+            border:
+                1px solid
+                rgba(255,255,255,.25);
+
+            border-radius:
+                20px;
+
+            overflow:
+                hidden;
+
+            z-index:
+                100;
+
+        }
+
+
+        #experiencia {
+
+            width:
+                0%;
+
+            height:
+                100%;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #00d4ff,
+                    #39ff88
+                );
+
+            transition:
+                width .3s;
+
+        }
+
+
+        /* =========================================================
+           PERSONAJE
+        ========================================================= */
+
+        #jugador {
+
+            position: absolute;
+
+            width: 95px;
+            height: 120px;
+
+            left: 100px;
+
+            bottom: 105px;
+
+            z-index: 40;
+
+            transition:
+                filter .15s;
+
+        }
+
+
+        #jugador img {
+
+            width:
+                100%;
+
+            height:
+                100%;
+
+            object-fit:
+                contain;
+
+            pointer-events:
+                none;
+
+            user-select:
+                none;
+
+        }
+
+
+        #jugador.danado {
+
+            filter:
+                brightness(3)
+                saturate(.3);
+
+        }
+
+
+        #jugador.escudo {
+
+            filter:
+                drop-shadow(
+                    0 0 15px
+                    #00d9ff
+                );
+
+        }
+
+
+        /* =========================================================
+           SOMBRA DEL JUGADOR
+        ========================================================= */
+
+        #sombraJugador {
+
+            position: absolute;
+
+            width:
+                70px;
+
+            height:
+                14px;
+
+            border-radius:
+                50%;
+
+            background:
+                rgba(0,0,0,.35);
+
+            z-index:
+                35;
+
+            filter:
+                blur(4px);
+
+        }
+
+
+        /* =========================================================
+           SUELO
+        ========================================================= */
+
+        #suelo {
+
+            position: absolute;
+
+            left: 0;
+            right: 0;
+
+            bottom: 0;
+
+            height:
+                105px;
+
+            background:
+                linear-gradient(
+                    #f4d477,
+                    #a66b25
+                );
+
+            border-top:
+                7px solid
+                #1594c7;
+
+            z-index:
+                30;
+
+        }
+
+
+        #suelo::after {
+
+            content:
+                "⚓  ☠  ⚓  ☠  ⚓  ☠  ⚓  ☠";
+
+            position: absolute;
+
+            top: 18px;
+
+            width:
+                100%;
+
+            text-align:
+                center;
+
+            color:
+                rgba(80,40,10,.3);
+
+            font-size:
+                25px;
+
+            letter-spacing:
+                30px;
+
+        }
+
+
+        /* =========================================================
+           FRUTAS
+        ========================================================= */
+
+        .fruta {
+
+            position: absolute;
+
+            width:
+                62px;
+
+            height:
+                62px;
+
+            z-index:
+                38;
+
+            animation:
+                frutaFlotar 1s ease-in-out infinite alternate;
+
+            filter:
+                drop-shadow(
+                    0 5px 8px
+                    rgba(0,0,0,.3)
+                );
+
+        }
+
+
+        .fruta img {
+
+            width:
+                100%;
+
+            height:
+                100%;
+
+            object-fit:
+                contain;
+
+            pointer-events:
+                none;
+
+        }
+
+
+        @keyframes frutaFlotar {
+
+            from {
+
+                transform:
+                    translateY(0)
+                    rotate(-4deg);
+
+            }
+
+            to {
+
+                transform:
+                    translateY(-12px)
+                    rotate(4deg);
+
+            }
+
+        }
+
+
+        /* =========================================================
+           MONEDAS
+        ========================================================= */
+
+        .moneda {
+
+            position: absolute;
+
+            width:
+                45px;
+
+            height:
+                45px;
+
+            z-index:
+                37;
+
+            animation:
+                monedaGirar .8s infinite alternate;
+
+        }
+
+
+        .moneda img {
+
+            width:
+                100%;
+
+            height:
+                100%;
+
+            object-fit:
+                contain;
+
+        }
+
+
+        @keyframes monedaGirar {
+
+            from {
+
+                transform:
+                    scaleX(.7)
+                    rotateY(0deg);
+
+            }
+
+            to {
+
+                transform:
+                    scaleX(1)
+                    rotateY(180deg);
+
+            }
+
+        }
+
+
+        /* =========================================================
+           ENEMIGOS
+        ========================================================= */
+
+        .enemigo {
+
+            position: absolute;
+
+            width:
+                90px;
+
+            height:
+                110px;
+
+            bottom:
+                105px;
+
+            z-index:
+                39;
+
+        }
+
+
+        .enemigo img {
+
+            width:
+                100%;
+
+            height:
+                100%;
+
+            object-fit:
+                contain;
+
+            pointer-events:
+                none;
+
+        }
+
+
+        /* =========================================================
+           JEFE
+        ========================================================= */
+
+        #jefe {
+
+            position: absolute;
+
+            width:
+                150px;
+
+            height:
+                170px;
+
+            right:
+                -180px;
+
+            bottom:
+                105px;
+
+            z-index:
+                45;
+
+            display:
+                none;
+
+        }
+
+
+        #jefe img {
+
+            width:
+                100%;
+
+            height:
+                100%;
+
+            object-fit:
+                contain;
+
+        }
+
+
+        #barraJefe {
+
+            position: absolute;
+
+            bottom:
+                280px;
+
+            left: 50%;
+
+            transform:
+                translateX(-50%);
+
+            width:
+                min(500px, 70%);
+
+            height:
+                18px;
+
+            background:
+                rgba(0,0,0,.7);
+
+            border:
+                2px solid
+                #ff304f;
+
+            border-radius:
+                20px;
+
+            overflow:
+                hidden;
+
+            display:
+                none;
+
+            z-index:
+                100;
+
+        }
+
+
+        #vidaJefe {
+
+            width:
+                100%;
+
+            height:
+                100%;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #ff304f,
+                    #ff8a00
+                );
+
+            transition:
+                width .2s;
+
+        }
+
+
+        /* =========================================================
+           PROYECTIL
+        ========================================================= */
+
+        .puño {
+
+            position: absolute;
+
+            width:
+                65px;
+
+            height:
+                65px;
+
+            z-index:
+                50;
+
+            pointer-events:
+                none;
+
+        }
+
+
+        .puño img {
+
+            width:
+                100%;
+
+            height:
+                100%;
+
+            object-fit:
+                contain;
+
+        }
+
+
+        /* =========================================================
+           EXPLOSIÓN
+        ========================================================= */
+
+        .explosion {
+
+            position: absolute;
+
+            width:
+                100px;
+
+            height:
+                100px;
+
+            border-radius:
+                50%;
+
+            background:
+                radial-gradient(
+                    circle,
+                    #fff 0%,
+                    #ffe600 20%,
+                    #ff7300 45%,
+                    transparent 70%
+                );
+
+            z-index:
+                70;
+
+            animation:
+                explotar .45s forwards;
+
+            pointer-events:
+                none;
+
+        }
+
+
+        @keyframes explotar {
+
+            from {
+
+                transform:
+                    scale(.2);
+
+                opacity:
+                    1;
+
+            }
+
+            to {
+
+                transform:
+                    scale(1.8);
+
+                opacity:
+                    0;
+
+            }
+
+        }
+
+
+        /* =========================================================
+           TEXTO FLOTANTE
+        ========================================================= */
+
+        .texto-flotante {
+
+            position:
+                absolute;
+
+            color:
+                white;
+
+            font-size:
+                24px;
+
+            font-weight:
+                900;
+
+            z-index:
+                100;
+
+            pointer-events:
+                none;
+
+            text-shadow:
+                2px 2px 0 #000;
+
+            animation:
+                textoSubir .8s forwards;
+
+        }
+
+
+        @keyframes textoSubir {
+
+            from {
+
+                opacity:
+                    1;
+
+                transform:
+                    translateY(0)
+                    scale(1);
+
+            }
+
+            to {
+
+                opacity:
+                    0;
+
+                transform:
+                    translateY(-70px)
+                    scale(1.3);
+
+            }
+
+        }
+
+
+        /* =========================================================
+           CONTROLES
+        ========================================================= */
+
+        #controles {
+
+            position:
+                absolute;
+
+            left:
+                20px;
+
+            right:
+                20px;
+
+            bottom:
+                125px;
+
+            display:
+                flex;
+
+            justify-content:
+                space-between;
+
+            z-index:
+                200;
+
+            pointer-events:
+                none;
+
+        }
+
+
+        .grupo-control {
+
+            display:
+                flex;
+
+            gap:
+                10px;
+
+            pointer-events:
+                auto;
+
+        }
+
+
+        .control {
+
+            width:
+                62px;
+
+            height:
+                62px;
+
+            display:
+                flex;
+
+            justify-content:
+                center;
+
+            align-items:
+                center;
+
+            border-radius:
+                50%;
+
+            color:
+                white;
+
+            font-size:
+                25px;
+
+            background:
+                rgba(0,0,0,.65);
+
+            border:
+                2px solid
+                rgba(255,255,255,.7);
+
+            backdrop-filter:
+                blur(5px);
+
+            user-select:
+                none;
+
+            transition:
+                .1s;
+
+        }
+
+
+        .control:active {
+
+            transform:
+                scale(.88);
+
+            background:
+                #ff7b00;
+
+        }
+
+
+        /* =========================================================
+           ATAQUE
+        ========================================================= */
+
+        #botonAtaque {
+
+            width:
+                72px;
+
+            height:
+                72px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #ff304f,
+                    #ff7600
+                );
+
+            border:
+                3px solid
+                #ffd54a;
+
+            font-size:
+                27px;
+
+        }
+
+
+        /* =========================================================
+           PAUSA
+        ========================================================= */
+
+        #botonPausa {
+
+            position:
+                absolute;
+
+            right:
+                20px;
+
+            top:
+                105px;
+
+            width:
+                45px;
+
+            height:
+                45px;
+
+            border-radius:
+                12px;
+
+            background:
+                rgba(0,0,0,.65);
+
+            color:
+                white;
+
+            border:
+                1px solid
+                rgba(255,255,255,.4);
+
+            z-index:
+                200;
+
+        }
+
+
+        /* =========================================================
+           MODALES
+        ========================================================= */
+
+        .modal {
+
+            position:
+                absolute;
+
+            inset:
+                0;
+
+            display:
+                none;
+
+            justify-content:
+                center;
+
+            align-items:
+                center;
+
+            background:
+                rgba(0,0,0,.72);
+
+            backdrop-filter:
+                blur(6px);
+
+            z-index:
+                500;
+
+        }
+
+
+        .modal-caja {
+
+            width:
+                min(550px, 90%);
+
+            padding:
+                35px;
+
+            text-align:
+                center;
+
+            color:
+                white;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #071525,
+                    #101f35
+                );
+
+            border:
+                2px solid
+                #ffd54a;
+
+            border-radius:
+                25px;
+
+            box-shadow:
+                0 0 60px
+                rgba(0,190,255,.25);
+
+        }
+
+
+        .modal-caja h2 {
+
+            font-size:
+                42px;
+
+            color:
+                #ffd54a;
+
+            margin-bottom:
+                15px;
+
+        }
+
+
+        .modal-caja p {
+
+            color:
+                #d7e0e9;
+
+            line-height:
+                1.7;
+
+            margin-bottom:
+                25px;
+
+        }
+
+
+        .estadisticas {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap:
+                10px;
+
+            margin-bottom:
+                25px;
+
+        }
+
+
+        .estadistica {
+
+            padding:
+                15px;
+
+            background:
+                rgba(255,255,255,.06);
+
+            border-radius:
+                12px;
+
+        }
+
+
+        .estadistica span {
+
+            display:
+                block;
+
+            color:
+                #9db2c8;
+
+            font-size:
+                13px;
+
+        }
+
+
+        .estadistica strong {
+
+            font-size:
+                24px;
+
+            color:
+                white;
+
+        }
+
+
+        /* =========================================================
+           PAUSA
+        ========================================================= */
+
+        #pausa {
+
+            z-index:
+                600;
+
+        }
+
+
+        /* =========================================================
+           RESPONSIVE
+        ========================================================= */
+
+        @media(max-width: 700px) {
+
+
+            #hud {
+
+                top:
+                    8px;
+
+                left:
+                    8px;
+
+                right:
+                    8px;
+
+            }
+
+
+            .hud-box {
+
+                min-width:
+                    auto;
+
+                padding:
+                    7px 9px;
+
+                font-size:
+                    11px;
+
+            }
+
+
+            #experiencia-contenedor {
+
+                top:
+                    62px;
+
+                width:
+                    65%;
+
+            }
+
+
+            #botonPausa {
+
+                top:
+                    88px;
+
+            }
+
+
+            #jugador {
+
+                width:
+                    72px;
+
+                height:
+                    95px;
+
+            }
+
+
+            .enemigo {
+
+                width:
+                    68px;
+
+                height:
+                    85px;
+
+            }
+
+
+            #jefe {
+
+                width:
+                    120px;
+
+                height:
+                    140px;
+
+            }
+
+
+            #suelo {
+
+                height:
+                    90px;
+
+            }
+
+
+            #controles {
+
+                bottom:
+                    105px;
+
+            }
+
+
+            .control {
+
+                width:
+                    54px;
+
+                height:
+                    54px;
+
+            }
+
+
+            #botonAtaque {
+
+                width:
+                    64px;
+
+                height:
+                    64px;
+
+            }
+
+        }
+
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =============================================================
+     PANTALLA DE INICIO
+============================================================== -->
+
+<section id="inicio">
+
+
+    <!-- IMAGEN DEL FONDO -->
+
+    <img
+        id="inicioFondo"
+        src="img/grupo.jpg"
+        alt="Tripulación de One Piece"
+    >
+
+
+    <div class="inicio-contenido">
+
+
+        <div class="titulo-principal">
+
+            ONE PIECE
+
+        </div>
+
+
+        <div class="subtitulo">
+
+            ☠️ GRAND ADVENTURE ☠️
+
+        </div>
+
+
+        <p class="descripcion">
+
+            Navega por el Grand Line, recoge tesoros,
+            consigue frutas del diablo, derrota piratas
+            y enfréntate a poderosos jefes.
+
+            <br><br>
+
+            Tu aventura apenas comienza...
+
+        </p>
+
+
+        <button
+            class="boton-principal"
+            onclick="iniciarJuego()"
+        >
+
+            🏴‍☠️ COMENZAR AVENTURA
+
+        </button>
+
+
+        <div class="controles-info">
+
+            <div class="tecla">
+                ← → Mover
+            </div>
+
+            <div class="tecla">
+                ↑ Saltar
+            </div>
+
+            <div class="tecla">
+                Z Ataque
+            </div>
+
+            <div class="tecla">
+                X Especial
+            </div>
+
+            <div class="tecla">
+                ESC Pausa
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =============================================================
+     JUEGO
+============================================================== -->
+
+<main id="juego">
+
+
+    <!-- FONDO -->
+
+    <img
+        id="fondoJuego"
+        class="capa-fondo"
+        src="img/grupo.jpg"
+        alt="Mundo de One Piece"
+    >
+
+
+    <div class="capa-mar"></div>
+
+
+    <!-- NUBES -->
+
+    <div class="nube nube1"></div>
+
+    <div class="nube nube2"></div>
+
+    <div class="nube nube3"></div>
+
+
+
+    <!-- =========================================================
+         HUD
+    ========================================================== -->
+
+    <div id="hud">
+
+
+        <div class="hud-grupo">
+
+
+            <div class="hud-box">
+
+                🪙
+                <strong id="puntos">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="hud-box">
+
+                ❤️
+                <strong id="vidas">
+                    3
+                </strong>
+
+            </div>
+
+
+            <div class="hud-box">
+
+                🏆 NIVEL
+                <strong id="nivel">
+                    1
+                </strong>
+
+            </div>
+
+
+            <div class="hud-box">
+
+                🔥 COMBO
+                <strong id="combo">
+                    x1
+                </strong>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="hud-grupo">
+
+
+            <div class="hud-box">
+
+                🌊
+                <strong id="fase">
+                    EAST BLUE
+                </strong>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =========================================================
+         EXPERIENCIA
+    ========================================================== -->
+
+    <div id="experiencia-contenedor">
+
+        <div id="experiencia"></div>
+
+    </div>
+
+
+
+    <!-- =========================================================
+         PAUSA
+    ========================================================== -->
+
+    <button
+        id="botonPausa"
+        onclick="alternarPausa()"
+    >
+
+        ⏸
+
+    </button>
+
+
+
+    <!-- =========================================================
+         JUGADOR
+    ========================================================== -->
+
+    <div id="sombraJugador"></div>
+
+
+    <div id="jugador">
+
+
+        <!-- IMG DE LUFFY -->
+
+        <img
+            src="img/luffy.jpg"
+            alt="Luffy"
+        >
+
+
+    </div>
+
+
+
+    <!-- =========================================================
+         JEFE
+    ========================================================== -->
+
+    <div id="barraJefe">
+
+        <div id="vidaJefe"></div>
+
+    </div>
+
+
+    <div id="jefe">
+
+
+        <!-- IMG DEL JEFE -->
+
+        <img
+            src="img/boss.png"
+            alt="Jefe pirata"
+        >
+
+
+    </div>
+
+
+
+    <!-- =========================================================
+         SUELO
+    ========================================================== -->
+
+    <div id="suelo"></div>
+
+
+
+    <!-- =========================================================
+         CONTROLES
+    ========================================================== -->
+
+    <div id="controles">
+
+
+        <div class="grupo-control">
+
+
+            <div
+                class="control"
+                id="izquierda"
+            >
+
+                ◀
+
+            </div>
+
+
+            <div
+                class="control"
+                id="derecha"
+            >
+
+                ▶
+
+            </div>
+
+
+            <div
+                class="control"
+                id="saltar"
+            >
+
+                ▲
+
+            </div>
+
+
+        </div>
+
+
+        <div class="grupo-control">
+
+
+            <div
+                class="control"
+                id="botonAtaque"
+            >
+
+                👊
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =========================================================
+         PAUSA
+    ========================================================== -->
+
+    <div
+        class="modal"
+        id="pausa"
+    >
+
+
+        <div class="modal-caja">
+
+
+            <h2>
+
+                ⏸ PAUSA
+
+            </h2>
+
+
+            <p>
+
+                Tu aventura está pausada.
+
+                <br>
+
+                El Grand Line puede esperar...
+
+            </p>
+
+
+            <button
+                class="boton-principal"
+                onclick="alternarPausa()"
+            >
+
+                ▶ CONTINUAR
+
+            </button>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =========================================================
+         GAME OVER
+    ========================================================== -->
+
+    <div
+        class="modal"
+        id="gameOver"
+    >
+
+
+        <div class="modal-caja">
+
+
+            <h2>
+
+                ☠️ GAME OVER
+
+            </h2>
+
+
+            <p>
+
+                La tripulación ha caído...
+
+                <br>
+
+                Pero un verdadero pirata
+                nunca abandona su sueño.
+
+            </p>
+
+
+            <div class="estadisticas">
+
+
+                <div class="estadistica">
+
+                    <span>
+                        Puntuación
+                    </span>
+
+                    <strong id="finalPuntos">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="estadistica">
+
+                    <span>
+                        Nivel
+                    </span>
+
+                    <strong id="finalNivel">
+                        1
+                    </strong>
+
+                </div>
+
+
+                <div class="estadistica">
+
+                    <span>
+                        Enemigos
+                    </span>
+
+                    <strong id="finalEnemigos">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="estadistica">
+
+                    <span>
+                        Frutas
+                    </span>
+
+                    <strong id="finalFrutas">
+                        0
+                    </strong>
+
+                </div>
+
+
+            </div>
+
+
+            <button
+                class="boton-principal"
+                onclick="reiniciarJuego()"
+            >
+
+                🔄 VOLVER A JUGAR
+
+            </button>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =========================================================
+         VICTORIA
+    ========================================================== -->
+
+    <div
+        class="modal"
+        id="victoria"
+    >
+
+
+        <div class="modal-caja">
+
+
+            <h2>
+
+                👑 ¡VICTORIA!
+
+            </h2>
+
+
+            <p>
+
+                ¡Has derrotado al jefe!
+
+                <br>
+
+                Tu aventura continúa
+                por el Grand Line.
+
+            </p>
+
+
+            <div class="estadisticas">
+
+
+                <div class="estadistica">
+
+                    <span>
+                        Puntuación
+                    </span>
+
+                    <strong id="victoriaPuntos">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="estadistica">
+
+                    <span>
+                        Nivel
+                    </span>
+
+                    <strong id="victoriaNivel">
+                        1
+                    </strong>
+
+                </div>
+
+
+            </div>
+
+
+            <button
+                class="boton-principal"
+                onclick="reiniciarJuego()"
+            >
+
+                🏴‍☠️ NUEVA AVENTURA
+
+            </button>
+
+
+        </div>
+
+
+    </div>
+
+
+</main>
+
+
+
+<script>
+
+
+/* =============================================================
+   ELEMENTOS
+============================================================= */
+
+const inicio =
+    document.getElementById("inicio");
+
+const juego =
+    document.getElementById("juego");
+
+const jugador =
+    document.getElementById("jugador");
+
+const sombraJugador =
+    document.getElementById("sombraJugador");
+
+const puntosTexto =
+    document.getElementById("puntos");
+
+const vidasTexto =
+    document.getElementById("vidas");
+
+const nivelTexto =
+    document.getElementById("nivel");
+
+const comboTexto =
+    document.getElementById("combo");
+
+const faseTexto =
+    document.getElementById("fase");
+
+const experiencia =
+    document.getElementById("experiencia");
+
+const jefe =
+    document.getElementById("jefe");
+
+const barraJefe =
+    document.getElementById("barraJefe");
+
+const vidaJefe =
+    document.getElementById("vidaJefe");
+
+const pausa =
+    document.getElementById("pausa");
+
+const gameOver =
+    document.getElementById("gameOver");
+
+const victoria =
+    document.getElementById("victoria");
+
+
+
+/* =============================================================
+   VARIABLES
+============================================================= */
+
+let x = 100;
+
+let y = 105;
+
+let velocidadY = 0;
+
+let gravedad = -0.65;
+
+let fuerzaSalto = 13;
+
+let velocidadMovimiento = 6;
+
+let puntos = 0;
+
+let vidas = 3;
+
+let nivel = 1;
+
+let combo = 1;
+
+let experienciaActual = 0;
+
+let experienciaMaxima = 100;
+
+let jugando = false;
+
+let pausado = false;
+
+let teclas = {};
+
+let frutas = [];
+
+let monedas = [];
+
+let enemigos = [];
+
+let proyectiles = [];
+
+let totalEnemigosDerrotados = 0;
+
+let totalFrutas = 0;
+
+let saltando = false;
+
+let invulnerable = false;
+
+let ataqueDisponible = true;
+
+let especialDisponible = true;
+
+let tiempoCombo = 0;
+
+let jefeActivo = false;
+
+let vidaJefeActual = 100;
+
+let jefeX = 0;
+
+let jefeDerrotado = false;
+
+let intervaloFruta;
+
+let intervaloMoneda;
+
+let intervaloEnemigo;
+
+let tiempoAnterior = 0;
+
+
+
+/* =============================================================
+   AUDIO SIMPLE
+============================================================= */
+
+let audioContext = null;
+
+
+function sonido(frecuencia, duracion = .08) {
+
+
+    try {
+
+
+        if (!audioContext) {
+
+            audioContext =
+                new (
+                    window.AudioContext ||
+                    window.webkitAudioContext
+                )();
+
+        }
+
+
+        const oscilador =
+            audioContext.createOscillator();
+
+
+        const ganancia =
+            audioContext.createGain();
+
+
+        oscilador.frequency.value =
+            frecuencia;
+
+
+        oscilador.type =
+            "square";
+
+
+        ganancia.gain.setValueAtTime(
+            .08,
+            audioContext.currentTime
+        );
+
+
+        ganancia.gain.exponentialRampToValueAtTime(
+            .001,
+            audioContext.currentTime + duracion
+        );
+
+
+        oscilador.connect(ganancia);
+
+        ganancia.connect(
+            audioContext.destination
+        );
+
+
+        oscilador.start();
+
+        oscilador.stop(
+            audioContext.currentTime +
+            duracion
+        );
+
+
+    } catch (error) {
+
+        /* El juego continúa aunque el navegador bloquee audio */
+
+    }
+
+}
+
+
+
+/* =============================================================
+   INICIAR
+============================================================= */
+
+function iniciarJuego() {
+
+
+    inicio.style.display =
+        "none";
+
+
+    juego.style.display =
+        "block";
+
+
+    gameOver.style.display =
+        "none";
+
+
+    victoria.style.display =
+        "none";
+
+
+    pausado = false;
+
+    jugando = true;
+
+
+    x = 100;
+
+    y = 105;
+
+    velocidadY = 0;
+
+
+    puntos = 0;
+
+    vidas = 3;
+
+    nivel = 1;
+
+    combo = 1;
+
+    experienciaActual = 0;
+
+    totalEnemigosDerrotados = 0;
+
+    totalFrutas = 0;
+
+
+    jefeActivo = false;
+
+    jefeDerrotado = false;
+
+
+    jefe.style.display =
+        "none";
+
+
+    barraJefe.style.display =
+        "none";
+
+
+    limpiarObjetos();
+
+
+    actualizarHUD();
+
+
+    crearFruta();
+
+    crearFruta();
+
+
+    crearMoneda();
+
+    crearMoneda();
+
+    crearMoneda();
+
+
+    crearEnemigo();
+
+
+    clearInterval(
+        intervaloFruta
+    );
+
+
+    clearInterval(
+        intervaloMoneda
+    );
+
+
+    clearInterval(
+        intervaloEnemigo
+    );
+
+
+    intervaloFruta =
+        setInterval(
+            () => {
+
+                if (jugando && !pausado) {
+
+                    crearFruta();
+
+                }
+
+            },
+            2400
+        );
+
+
+    intervaloMoneda =
+        setInterval(
+            () => {
+
+                if (jugando && !pausado) {
+
+                    crearMoneda();
+
+                }
+
+            },
+            1800
+        );
+
+
+    intervaloEnemigo =
+        setInterval(
+            () => {
+
+                if (jugando && !pausado) {
+
+                    crearEnemigo();
+
+                }
+
+            },
+            2600
+        );
+
+
+    sonido(
+        500,
+        .12
+    );
+
+
+    requestAnimationFrame(
+        actualizarJuego
+    );
+
+}
+
+
+
+/* =============================================================
+   TECLADO
+============================================================= */
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+
+        teclas[event.key] =
+            true;
+
+
+        if (
+            event.key === "ArrowUp" ||
+            event.key === " "
+        ) {
+
+            saltar();
+
+        }
+
+
+        if (
+            event.key.toLowerCase()
+            === "z"
+        ) {
+
+            atacar();
+
+        }
+
+
+        if (
+            event.key.toLowerCase()
+            === "x"
+        ) {
+
+            ataqueEspecial();
+
+        }
+
+
+        if (
+            event.key === "Escape"
+        ) {
+
+            alternarPausa();
+
+        }
+
+    }
+);
+
+
+
+document.addEventListener(
+    "keyup",
+    function(event) {
+
+        teclas[event.key] =
+            false;
+
+    }
+);
+
+
+
+/* =============================================================
+   MOVIMIENTO
+============================================================= */
+
+function moverJugador() {
+
+
+    if (
+        teclas["ArrowLeft"]
+    ) {
+
+        x -=
+            velocidadMovimiento;
+
+
+    }
+
+
+    if (
+        teclas["ArrowRight"]
+    ) {
+
+        x +=
+            velocidadMovimiento;
+
+    }
+
+
+    const ancho =
+        window.innerWidth;
+
+
+    if (x < 0) {
+
+        x = 0;
+
+    }
+
+
+    if (
+        x >
+        ancho - 95
+    ) {
+
+        x =
+            ancho - 95;
+
+    }
+
+
+    /* GRAVEDAD */
+
+    velocidadY +=
+        gravedad;
+
+
+    y +=
+        velocidadY;
+
+
+    /* SUELO */
+
+    if (y <= 105) {
+
+        y = 105;
+
+        velocidadY = 0;
+
+        saltando = false;
+
+    }
+
+
+    jugador.style.left =
+        x + "px";
+
+
+    jugador.style.bottom =
+        y + "px";
+
+
+    sombraJugador.style.left =
+        (x + 12) + "px";
+
+
+    sombraJugador.style.bottom =
+        "98px";
+
+}
+
+
+
+/* =============================================================
+   SALTO
+============================================================= */
+
+function saltar() {
+
+
+    if (
+        !jugando ||
+        pausado
+    ) {
+
+        return;
+
+    }
+
+
+    if (!saltando) {
+
+        velocidadY =
+            fuerzaSalto;
+
+        saltando = true;
+
+        sonido(
+            450,
+            .07
+        );
+
+    }
+
+}
+
+
+
+/* =============================================================
+   CREAR FRUTA
+============================================================= */
+
+function crearFruta() {
+
+
+    const fruta =
+        document.createElement(
+            "div"
+        );
+
+
+    fruta.className =
+        "fruta";
+
+
+    fruta.innerHTML = `
+
+        <img
+            src="img/fruta.jpg"
+            alt="Fruta del Diablo"
+        >
+
+    `;
+
+
+    const posicionX =
+        100 +
+        Math.random() *
+        (
+            window.innerWidth -
+            180
+        );
+
+
+    const posicionY =
+        180 +
+        Math.random() *
+        (
+            window.innerHeight -
+            390
+        );
+
+
+    fruta.style.left =
+        posicionX + "px";
+
+
+    fruta.style.bottom =
+        posicionY + "px";
+
+
+    juego.appendChild(
+        fruta
+    );
+
+
+    frutas.push(
+        fruta
+    );
+
+}
+
+
+
+/* =============================================================
+   CREAR MONEDA
+============================================================= */
+
+function crearMoneda() {
+
+
+    const moneda =
+        document.createElement(
+            "div"
+        );
+
+
+    moneda.className =
+        "moneda";
+
+
+    moneda.innerHTML = `
+
+        <img
+            src="img/moneda.png"
+            alt="Berry"
+        >
+
+    `;
+
+
+    moneda.style.left =
+        (
+            80 +
+            Math.random() *
+            (
+                window.innerWidth -
+                140
+            )
+        ) + "px";
+
+
+    moneda.style.bottom =
+        (
+            140 +
+            Math.random() *
+            250
+        ) + "px";
+
+
+    juego.appendChild(
+        moneda
+    );
+
+
+    monedas.push(
+        moneda
+    );
+
+}
+
+
+
+/* =============================================================
+   CREAR ENEMIGO
+============================================================= */
+
+function crearEnemigo() {
+
+
+    if (
+        jefeActivo
+    ) {
+
+        return;
+
+    }
+
+
+    const enemigo =
+        document.createElement(
+            "div"
+        );
+
+
+    enemigo.className =
+        "enemigo";
+
+
+    enemigo.innerHTML = `
+
+        <img
+            src="img/enemigo.jpg"
+            alt="Pirata enemigo"
+        >
+
+    `;
+
+
+    enemigo.style.left =
+        (
+            window.innerWidth +
+            100
+        ) + "px";
+
+
+    enemigo.style.bottom =
+        "105px";
+
+
+    juego.appendChild(
+        enemigo
+    );
+
+
+    enemigos.push({
+
+        elemento:
+            enemigo,
+
+        x:
+            window.innerWidth +
+            100,
+
+        velocidad:
+            3 +
+            Math.random() *
+            2
+
+    });
+
+}
+
+
+
+/* =============================================================
+   ATAQUE
+============================================================= */
+
+function atacar() {
+
+
+    if (
+        !jugando ||
+        pausado ||
+        !ataqueDisponible
+    ) {
+
+        return;
+
+    }
+
+
+    ataqueDisponible =
+        false;
+
+
+    const golpe =
+        document.createElement(
+            "div"
+        );
+
+
+    golpe.className =
+        "puño";
+
+
+    golpe.innerHTML = `
+
+        <img
+            src="img/luffy.jpg"
+            alt="Ataque de Luffy"
+        >
+
+    `;
+
+
+    golpe.style.left =
+        (x + 70) + "px";
+
+
+    golpe.style.bottom =
+        (y + 25) + "px";
+
+
+    juego.appendChild(
+        golpe
+    );
+
+
+    proyectiles.push({
+
+        elemento:
+            golpe,
+
+        x:
+            x + 70,
+
+        y:
+            y + 25,
+
+        velocidad:
+            13,
+
+        tipo:
+            "normal"
+
+    });
+
+
+    sonido(
+        180,
+        .1
+    );
+
+
+    setTimeout(
+        () => {
+
+            ataqueDisponible =
+                true;
+
+        },
+        250
+    );
+
+}
+
+
+
+/* =============================================================
+   ATAQUE ESPECIAL
+============================================================= */
+
+function ataqueEspecial() {
+
+
+    if (
+        !jugando ||
+        pausado ||
+        !especialDisponible
+    ) {
+
+        return;
+
+    }
+
+
+    especialDisponible =
+        false;
+
+
+    for (
+        let i = 0;
+        i < 5;
+        i++
+    ) {
+
+
+        setTimeout(
+            () => {
+
+                const golpe =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                golpe.className =
+                    "puño";
+
+
+                golpe.innerHTML = `
+
+                    <img
+                        src="img/luffy.jpg"
+                        alt="Ataque especial"
+                    >
+
+                `;
+
+
+                golpe.style.left =
+                    (
+                        x +
+                        65
+                    ) + "px";
+
+
+                golpe.style.bottom =
+                    (
+                        y +
+                        20 +
+                        i * 12
+                    ) + "px";
+
+
+                golpe.style.width =
+                    "80px";
+
+
+                golpe.style.height =
+                    "80px";
+
+
+                juego.appendChild(
+                    golpe
+                );
+
+
+                proyectiles.push({
+
+                    elemento:
+                        golpe,
+
+                    x:
+                        x + 65,
+
+                    y:
+                        y + 20 +
+                        i * 12,
+
+                    velocidad:
+                        17,
+
+                    tipo:
+                        "especial"
+
+                });
+
+
+            },
+            i * 70
+        );
+
+    }
+
+
+    mostrarTexto(
+        "⚡ GOMU GOMU!",
+        x,
+        y + 100
+    );
+
+
+    sonido(
+        800,
+        .3
+    );
+
+
+    setTimeout(
+        () => {
+
+            especialDisponible =
+                true;
+
+        },
+        4000
+    );
+
+}
+
+
+
+/* =============================================================
+   ACTUALIZAR PROYECTILES
+============================================================= */
+
+function actualizarProyectiles() {
+
+
+    proyectiles.forEach(
+        (proyectil, index) => {
+
+
+            proyectil.x +=
+                proyectil.velocidad;
+
+
+            proyectil.elemento.style.left =
+                proyectil.x + "px";
+
+
+            /* JEFE */
+
+            if (
+                jefeActivo &&
+                colisiona(
+                    proyectil.elemento,
+                    jefe
+                )
+            ) {
+
+
+                let daño =
+                    proyectil.tipo ===
+                    "especial"
+                        ? 12
+                        : 5;
+
+
+                vidaJefeActual -=
+                    daño;
+
+
+                if (
+                    vidaJefeActual <
+                    0
+                ) {
+
+                    vidaJefeActual =
+                        0;
+
+                }
+
+
+                vidaJefe.style.width =
+                    vidaJefeActual +
+                    "%";
+
+
+                crearExplosion(
+                    proyectil.x,
+                    y + 30
+                );
+
+
+                proyectil.elemento.remove();
+
+
+                proyectiles.splice(
+                    index,
+                    1
+                );
+
+
+                if (
+                    vidaJefeActual <= 0
+                ) {
+
+                    derrotarJefe();
+
+                }
+
+
+                return;
+
+            }
+
+
+            /* ENEMIGOS */
+
+            enemigos.forEach(
+                (enemigo, enemigoIndex) => {
+
+
+                    if (
+                        colisiona(
+                            proyectil.elemento,
+                            enemigo.elemento
+                        )
+                    ) {
+
+
+                        crearExplosion(
+                            proyectil.x,
+                            y + 30
+                        );
+
+
+                        enemigo.elemento.remove();
+
+
+                        enemigos.splice(
+                            enemigoIndex,
+                            1
+                        );
+
+
+                        proyectil.elemento.remove();
+
+
+                        proyectiles.splice(
+                            index,
+                            1
+                        );
+
+
+                        puntos +=
+                            25 *
+                            combo;
+
+
+                        totalEnemigosDerrotados++;
+
+
+                        combo++;
+
+
+                        tiempoCombo =
+                            180;
+
+
+                        ganarExperiencia(
+                            15
+                        );
+
+
+                        mostrarTexto(
+                            "+" +
+                            (25 * combo),
+                            proyectil.x,
+                            y + 80
+                        );
+
+
+                        sonido(
+                            650,
+                            .08
+                        );
+
+                    }
+
+                }
+            );
+
+
+            if (
+                proyectil.x >
+                window.innerWidth +
+                100
+            ) {
+
+
+                proyectil.elemento.remove();
+
+
+                proyectiles.splice(
+                    index,
+                    1
+                );
+
+            }
+
+        }
+    );
+
+}
+
+
+
+/* =============================================================
+   ACTUALIZAR ENEMIGOS
+============================================================= */
+
+function actualizarEnemigos() {
+
+
+    enemigos.forEach(
+        (enemigo, index) => {
+
+
+            enemigo.x -=
+                enemigo.velocidad +
+                nivel * .2;
+
+
+            enemigo.elemento.style.left =
+                enemigo.x + "px";
+
+
+            /* COLISIÓN */
+
+            if (
+                colisiona(
+                    jugador,
+                    enemigo.elemento
+                )
+            ) {
+
+
+                if (!invulnerable) {
+
+                    perderVida();
+
+                }
+
+
+                enemigo.elemento.remove();
+
+
+                enemigos.splice(
+                    index,
+                    1
+                );
+
+
+                return;
+
+            }
+
+
+            /* SALE */
+
+            if (
+                enemigo.x <
+                -120
+            ) {
+
+
+                enemigo.elemento.remove();
+
+
+                enemigos.splice(
+                    index,
+                    1
+                );
+
+
+            }
+
+        }
+    );
+
+}
+
+
+
+/* =============================================================
+   ACTUALIZAR FRUTAS
+============================================================= */
+
+function actualizarFrutas() {
+
+
+    frutas.forEach(
+        (fruta, index) => {
+
+
+            if (
+                colisiona(
+                    jugador,
+                    fruta
+                )
+            ) {
+
+
+                fruta.remove();
+
+
+                frutas.splice(
+                    index,
+                    1
+                );
+
+
+                puntos +=
+                    50 *
+                    combo;
+
+
+                totalFrutas++;
+
+
+                combo++;
+
+
+                tiempoCombo =
+                    180;
+
+
+                ganarExperiencia(
+                    20
+                );
+
+
+                mostrarTexto(
+                    "🍈 +50",
+                    x,
+                    y + 80
+                );
+
+
+                sonido(
+                    850,
+                    .1
+                );
+
+
+                comprobarNivel();
+
+            }
+
+        }
+    );
+
+}
+
+
+
+/* =============================================================
+   ACTUALIZAR MONEDAS
+============================================================= */
+
+function actualizarMonedas() {
+
+
+    monedas.forEach(
+        (moneda, index) => {
+
+
+            if (
+                colisiona(
+                    jugador,
+                    moneda
+                )
+            ) {
+
+
+                moneda.remove();
+
+
+                monedas.splice(
+                    index,
+                    1
+                );
+
+
+                puntos +=
+                    10 *
+                    combo;
+
+
+                mostrarTexto(
+                    "🪙 +10",
+                    x,
+                    y + 70
+                );
+
+
+                sonido(
+                    1000,
+                    .06
+                );
+
+
+                comprobarNivel();
+
+            }
+
+        }
+    );
+
+}
+
+
+
+/* =============================================================
+   PERDER VIDA
+============================================================= */
+
+function perderVida() {
+
+
+    if (invulnerable) {
+
+        return;
+
+    }
+
+
+    vidas--;
+
+
+    combo = 1;
+
+
+    tiempoCombo = 0;
+
+
+    actualizarHUD();
+
+
+    invulnerable =
+        true;
+
+
+    jugador.classList.add(
+        "danado"
+    );
+
+
+    mostrarTexto(
+        "💔 -1 VIDA",
+        x,
+        y + 100
+    );
+
+
+    sonido(
+        120,
+        .3
+    );
+
+
+    setTimeout(
+        () => {
+
+            invulnerable =
+                false;
+
+            jugador.classList.remove(
+                "danado"
+            );
+
+        },
+        1500
+    );
+
+
+    if (
+        vidas <= 0
+    ) {
+
+        terminarJuego();
+
+    }
+
+}
+
+
+
+/* =============================================================
+   EXPERIENCIA
+============================================================= */
+
+function ganarExperiencia(
+    cantidad
+) {
+
+
+    experienciaActual +=
+        cantidad;
+
+
+    while (
+        experienciaActual >=
+        experienciaMaxima
+    ) {
+
+
+        experienciaActual -=
+            experienciaMaxima;
+
+
+        subirNivel();
+
+    }
+
+
+    actualizarHUD();
+
+}
+
+
+
+/* =============================================================
+   SUBIR NIVEL
+============================================================= */
+
+function subirNivel() {
+
+
+    nivel++;
+
+
+    experienciaMaxima =
+        100 +
+        (nivel - 1) *
+        35;
+
+
+    puntos +=
+        100;
+
+
+    velocidadMovimiento +=
+        .25;
+
+
+    mostrarTexto(
+        "🔥 ¡NIVEL " +
+        nivel +
+        "!",
+        x,
+        y + 120
+    );
+
+
+    sonido(
+        900,
+        .25
+    );
+
+
+    cambiarFase();
+
+
+    /* JEFE CADA 5 NIVELES */
+
+    if (
+        nivel % 5 === 0 &&
+        !jefeActivo &&
+        !jefeDerrotado
+    ) {
+
+        iniciarJefe();
+
+    }
+
+
+    actualizarHUD();
+
+}
+
+
+
+/* =============================================================
+   FASE
+============================================================= */
+
+function cambiarFase() {
+
+
+    const fases = [
+
+        "EAST BLUE",
+
+        "GRAND LINE",
+
+        "ALABASTA",
+
+        "WATER 7",
+
+        "MARINEFORD",
+
+        "NEW WORLD",
+
+        "FINAL SEA"
+
+    ];
+
+
+    const indice =
+        Math.min(
+            Math.floor(
+                (nivel - 1) / 2
+            ),
+            fases.length - 1
+        );
+
+
+    faseTexto.textContent =
+        fases[indice];
+
+}
+
+
+
+/* =============================================================
+   COMPROBAR NIVEL
+============================================================= */
+
+function comprobarNivel() {
+
+
+    /* La experiencia controla el nivel */
+
+    actualizarHUD();
+
+}
+
+
+
+/* =============================================================
+   JEFE
+============================================================= */
+
+function iniciarJefe() {
+
+
+    jefeActivo =
+        true;
+
+
+    vidaJefeActual =
+        100;
+
+
+    jefe.style.display =
+        "block";
+
+
+    barraJefe.style.display =
+        "block";
+
+
+    vidaJefe.style.width =
+        "100%";
+
+
+    jefeX =
+        window.innerWidth +
+        200;
+
+
+    jefe.style.right =
+        "auto";
+
+
+    jefe.style.left =
+        jefeX + "px";
+
+
+    mostrarTexto(
+        "☠️ ¡APARECIÓ UN JEFE!",
+        window.innerWidth / 2,
+        window.innerHeight / 2
+    );
+
+
+    sonido(
+        80,
+        .6
+    );
+
+
+
+    const moverJefe =
+        setInterval(
+            () => {
+
+
+                if (
+                    !jefeActivo ||
+                    !jugando
+                ) {
+
+                    clearInterval(
+                        moverJefe
+                    );
+
+                    return;
+
+                }
+
+
+                if (!pausado) {
+
+                    jefeX -=
+                        2;
+
+
+                    jefe.style.left =
+                        jefeX + "px";
+
+
+                    if (
+                        jefeX <
+                        window.innerWidth -
+                        300
+                    ) {
+
+                        jefeX =
+                            window.innerWidth -
+                            300;
+
+                    }
+
+
+                    if (
+                        colisiona(
+                            jugador,
+                            jefe
+                        )
+                    ) {
+
+                        if (
+                            !invulnerable
+                        ) {
+
+                            perderVida();
+
+                        }
+
+                    }
+
+                }
+
+            },
+            30
+        );
+
+}
+
+
+
+/* =============================================================
+   DERROTAR JEFE
+============================================================= */
+
+function derrotarJefe() {
+
+
+    jefeActivo =
+        false;
+
+
+    jefeDerrotado =
+        true;
+
+
+    crearExplosion(
+        jefeX,
+        200
+    );
+
+
+    jefe.style.display =
+        "none";
+
+
+    barraJefe.style.display =
+        "none";
+
+
+    puntos +=
+        1000;
+
+
+    ganarExperiencia(
+        100
+    );
+
+
+    mostrarTexto(
+        "👑 JEFE DERROTADO +1000",
+        window.innerWidth / 2,
+        window.innerHeight / 2
+    );
+
+
+    sonido(
+        1200,
+        .5
+    );
+
+
+    setTimeout(
+        () => {
+
+            if (jugando) {
+
+                victoria.style.display =
+                    "flex";
+
+
+                document.getElementById(
+                    "victoriaPuntos"
+                ).textContent =
+                    puntos;
+
+
+                document.getElementById(
+                    "victoriaNivel"
+                ).textContent =
+                    nivel;
+
+            }
+
+        },
+        1500
+    );
+
+}
+
+
+
+/* =============================================================
+   EXPLOSIÓN
+============================================================= */
+
+function crearExplosion(
+    posicionX,
+    posicionY
+) {
+
+
+    const explosion =
+        document.createElement(
+            "div"
+        );
+
+
+    explosion.className =
+        "explosion";
+
+
+    explosion.style.left =
+        posicionX + "px";
+
+
+    explosion.style.bottom =
+        posicionY + "px";
+
+
+    juego.appendChild(
+        explosion
+    );
+
+
+    setTimeout(
+        () => {
+
+            explosion.remove();
+
+        },
+        500
+    );
+
+}
+
+
+
+/* =============================================================
+   TEXTO FLOTANTE
+============================================================= */
+
+function mostrarTexto(
+    texto,
+    posicionX,
+    posicionY
+) {
+
+
+    const elemento =
+        document.createElement(
+            "div"
+        );
+
+
+    elemento.className =
+        "texto-flotante";
+
+
+    elemento.textContent =
+        texto;
+
+
+    elemento.style.left =
+        posicionX + "px";
+
+
+    elemento.style.bottom =
+        posicionY + "px";
+
+
+    juego.appendChild(
+        elemento
+    );
+
+
+    setTimeout(
+        () => {
+
+            elemento.remove();
+
+        },
+        800
+    );
+
+}
+
+
+
+/* =============================================================
+   COLISIONES
+============================================================= */
+
+function colisiona(
+    elementoA,
+    elementoB
+) {
+
+
+    if (
+        !elementoA ||
+        !elementoB
+    ) {
+
+        return false;
+
+    }
+
+
+    const A =
+        elementoA.getBoundingClientRect();
+
+
+    const B =
+        elementoB.getBoundingClientRect();
+
+
+    return !(
+        A.right < B.left + 8 ||
+        A.left > B.right - 8 ||
+        A.bottom < B.top + 8 ||
+        A.top > B.bottom - 8
+    );
+
+}
+
+
+
+/* =============================================================
+   HUD
+============================================================= */
+
+function actualizarHUD() {
+
+
+    puntosTexto.textContent =
+        puntos;
+
+
+    vidasTexto.textContent =
+        vidas;
+
+
+    nivelTexto.textContent =
+        nivel;
+
+
+    comboTexto.textContent =
+        "x" + combo;
+
+
+    experiencia.style.width =
+        (
+            experienciaActual /
+            experienciaMaxima *
+            100
+        ) + "%";
+
+}
+
+
+
+/* =============================================================
+   COMBO
+============================================================= */
+
+function actualizarCombo() {
+
+
+    if (
+        tiempoCombo > 0
+    ) {
+
+        tiempoCombo--;
+
+    }
+
+
+    if (
+        tiempoCombo <= 0
+    ) {
+
+        combo = 1;
+
+    }
+
+
+    comboTexto.textContent =
+        "x" + combo;
+
+}
+
+
+
+/* =============================================================
+   PAUSA
+============================================================= */
+
+function alternarPausa() {
+
+
+    if (!jugando) {
+
+        return;
+
+    }
+
+
+    pausado =
+        !pausado;
+
+
+    pausa.style.display =
+        pausado
+            ? "flex"
+            : "none";
+
+}
+
+
+
+/* =============================================================
+   GAME OVER
+============================================================= */
+
+function terminarJuego() {
+
+
+    jugando =
+        false;
+
+
+    clearInterval(
+        intervaloFruta
+    );
+
+
+    clearInterval(
+        intervaloMoneda
+    );
+
+
+    clearInterval(
+        intervaloEnemigo
+    );
+
+
+    document.getElementById(
+        "finalPuntos"
+    ).textContent =
+        puntos;
+
+
+    document.getElementById(
+        "finalNivel"
+    ).textContent =
+        nivel;
+
+
+    document.getElementById(
+        "finalEnemigos"
+    ).textContent =
+        totalEnemigosDerrotados;
+
+
+    document.getElementById(
+        "finalFrutas"
+    ).textContent =
+        totalFrutas;
+
+
+    gameOver.style.display =
+        "flex";
+
+
+    sonido(
+        70,
+        .6
+    );
+
+}
+
+
+
+/* =============================================================
+   REINICIAR
+============================================================= */
+
+function reiniciarJuego() {
+
+
+    gameOver.style.display =
+        "none";
+
+
+    victoria.style.display =
+        "none";
+
+
+    pausa.style.display =
+        "none";
+
+
+    limpiarObjetos();
+
+
+    iniciarJuego();
+
+}
+
+
+
+/* =============================================================
+   LIMPIAR OBJETOS
+============================================================= */
+
+function limpiarObjetos() {
+
+
+    frutas.forEach(
+        fruta =>
+            fruta.remove()
+    );
+
+
+    monedas.forEach(
+        moneda =>
+            moneda.remove()
+    );
+
+
+    enemigos.forEach(
+        enemigo =>
+            enemigo.elemento.remove()
+    );
+
+
+    proyectiles.forEach(
+        proyectil =>
+            proyectil.elemento.remove()
+    );
+
+
+    frutas = [];
+
+    monedas = [];
+
+    enemigos = [];
+
+    proyectiles = [];
+
+}
+
+
+
+/* =============================================================
+   BUCLE PRINCIPAL
+============================================================= */
+
+function actualizarJuego(
+    tiempo
+) {
+
+
+    if (!jugando) {
+
+        return;
+
+    }
+
+
+    if (!pausado) {
+
+
+        moverJugador();
+
+
+        actualizarFrutas();
+
+
+        actualizarMonedas();
+
+
+        actualizarEnemigos();
+
+
+        actualizarProyectiles();
+
+
+        actualizarCombo();
+
+
+        actualizarHUD();
+
+
+    }
+
+
+    requestAnimationFrame(
+        actualizarJuego
+    );
+
+}
+
+
+
+/* =============================================================
+   CONTROLES TÁCTILES
+============================================================= */
+
+const izquierda =
+    document.getElementById(
+        "izquierda"
+    );
+
+
+const derecha =
+    document.getElementById(
+        "derecha"
+    );
+
+
+const saltarBoton =
+    document.getElementById(
+        "saltar"
+    );
+
+
+const ataqueBoton =
+    document.getElementById(
+        "botonAtaque"
+    );
+
+
+
+/* IZQUIERDA */
+
+izquierda.addEventListener(
+    "touchstart",
+    function(event) {
+
+        event.preventDefault();
+
+        teclas["ArrowLeft"] =
+            true;
+
+    }
+);
+
+
+izquierda.addEventListener(
+    "touchend",
+    function() {
+
+        teclas["ArrowLeft"] =
+            false;
+
+    }
+);
+
+
+
+/* DERECHA */
+
+derecha.addEventListener(
+    "touchstart",
+    function(event) {
+
+        event.preventDefault();
+
+        teclas["ArrowRight"] =
+            true;
+
+    }
+);
+
+
+derecha.addEventListener(
+    "touchend",
+    function() {
+
+        teclas["ArrowRight"] =
+            false;
+
+    }
+);
+
+
+
+/* SALTAR */
+
+saltarBoton.addEventListener(
+    "touchstart",
+    function(event) {
+
+        event.preventDefault();
+
+        saltar();
+
+    }
+);
+
+
+
+/* ATAQUE */
+
+ataqueBoton.addEventListener(
+    "touchstart",
+    function(event) {
+
+        event.preventDefault();
+
+        atacar();
+
+    }
+);
+
+
+
+/* =============================================================
+   MOUSE
+============================================================= */
+
+izquierda.addEventListener(
+    "mousedown",
+    () => {
+
+        teclas["ArrowLeft"] =
+            true;
+
+    }
+);
+
+
+izquierda.addEventListener(
+    "mouseup",
+    () => {
+
+        teclas["ArrowLeft"] =
+            false;
+
+    }
+);
+
+
+derecha.addEventListener(
+    "mousedown",
+    () => {
+
+        teclas["ArrowRight"] =
+            true;
+
+    }
+);
+
+
+derecha.addEventListener(
+    "mouseup",
+    () => {
+
+        teclas["ArrowRight"] =
+            false;
+
+    }
+);
+
+
+saltarBoton.addEventListener(
+    "click",
+    () => {
+
+        saltar();
+
+    }
+);
+
+
+ataqueBoton.addEventListener(
+    "click",
+    () => {
+
+        atacar();
+
+    }
+);
+
+
+/* =============================================================
+   EVITAR QUE EL PERSONAJE SALGA AL SOLTAR MOUSE FUERA
+============================================================= */
+
+document.addEventListener(
+    "mouseup",
+    () => {
+
+        teclas["ArrowLeft"] =
+            false;
+
+        teclas["ArrowRight"] =
+            false;
+
+    }
+);
+
+
+</script>
+
+
+</body>
+
+</html>
+

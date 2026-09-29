@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="navbar">
+    <!-- Logo y eslogan a la izquierda -->
+    <div class="nav-left">
+        <div class="logo-container">
+            <!-- Puedes reemplazar este SVG o texto por tu imagen del sombrero de paja/calavera -->
+            <div class="straw-hat"></div>
+        </div>
+        <span class="slogan">¡Vamos a ser<br>el Rey de los Piratas! ⚓</span>
+    </div>
+
+    <!-- Enlaces de navegación al centro -->
+    <nav class="nav-links">
+        <a href="index.html" class="active">Inicio</a>
+        <a href="personajes.html">Personajes</a>
+        <a href="manga-anime.html">Manga / Anime</a>
+        <a href="arcos.html">Arcos</a>
+        <a href="galeria.html">Galería</a>
+        <a href="mensaje.html">Mensaje</a>
+        <a href="juegos.html">Juegos</a>
+        <a href="para-ti.html">Para ti</a>
+    </nav>
+<div class="nav-right">
+        <div class="search-box">
+            <span class="search-icon">🔍</span>
+            <input type="text" placeholder="Buscar...">
+        </div>
+    </div>
+    
+</header>
+<div class="main-layout">
+    <main class="content-column">
+        <section class="banner-section">
+            <div class="banner-content">
+                <h1>No importa<br>cuán difícil sea el camino...<br>siempre seguiré<br>mirando hacia el mar.</h1>
+                <p class="banner-author">- Monkey D. Luffy</p>
+            </div>
+            <div class="banner-image">
+                <img src="img/grupo.jpg" alt="Tripulación One Piece">
+            </div>
+        </section>
+
+        <section class="characters-section">
+            <div class="section-header">
+                <span class="skull-mini">🏴‍☠️</span>
+                <div>
+                    <h2>Mis Personajes Favoritos</h2>
+                    <p>¡Conoce a los personajes más icónicos de One Piece!</p>
+                </div>
+            </div>
+            
+<!-- TARJETA LUFFY -->
+<div class="character-card" data-personaje="luffy">
+    <img src="img/luffy.jpg" alt="Luffy">
+    <div class="card-info">
+        <h3>Luffy</h3>
+        <p>"¡Yo seré el Rey de los Piratas!"</p>
+    </div>
+</div>
+
+<!-- TARJETA ZORO -->
+<div class="character-card" data-personaje="zoro">
+    <img src="img/zoro.jpg" alt="Zoro">
+    <div class="card-info">
+        <h3>Zoro</h3>
+        <p>"¡Seré el mejor espadachín del mundo!"</p>
+    </div>
+</div>
+
+<!-- TARJETA NAMI -->
+<div class="character-card" data-personaje="nami">
+    <img src="img/nami.jpg" alt="Nami">
+    <div class="card-info">
+        <h3>Nami</h3>
+        <p>"¡Quiero dibujar un mapa del mundo!"</p>
+    </div>
+</div>
+<!-- TARJETA ACE -->
+<div class="character-card" data-personaje="ace">
+    <img src="img/ace.jpg" alt="Ace">
+    <div class="card-info">
+        <h3>Ace</h3>
+        <p>"¡Quiero hacer que Barbablanca sea el Rey de los Piratas!"</p>
+    </div>
+</div>
+<!-- TARJETA SANJI -->
+<div class="character-card" data-personaje="sanji">
+    <img src="img/sanji.jpg" alt="Sanji">
+    <div class="card-info">
+        <h3>Sanji</h3>
+        <p>"¡Quiero encontrar el All Blue!"</p>
+    </div>
+</div>
+<!-- TARJETA CHOPPER -->
+<div class="character-card" data-personaje="chopper">
+    <img src="img/chopper.jpg" alt="Chopper">
+    <div class="card-info">
+        <h3>Chopper</h3>
+        <p>"¡Quiero curar cualquier enfermedad!"</p>
+    </div>
+</div>
+
+<div id="modal" class="modal">
+    <div class="modal-content">
+
+        <span class="cerrar">&times;</span>
+
+        <img id="modal-imagen" src="" alt="">
+
+        <div>
+            <h2 id="modal-nombre"></h2>
+            <p id="modal-historia"></p>
+        </div>
+
+    </div>
+</div>
+
+
+<script>
+const tarjetas = document.querySelectorAll(".character-card");
+
+const modal = document.getElementById("modal");
+const modalImagen = document.getElementById("modal-imagen");
+const modalNombre = document.getElementById("modal-nombre");
+const modalHistoria = document.getElementById("modal-historia");
+
+const cerrar = document.querySelector(".cerrar");
+
+
+tarjetas.forEach(tarjeta => {
+
+    tarjeta.addEventListener("click", () => {
+
+        const personaje = tarjeta.dataset.personaje;
+
+        if (personaje === "luffy") {
+            modalNombre.textContent = "Monkey D. Luffy";
+            modalImagen.src = "img/luffy.jpg";
+            modalHistoria.textContent =
+   "Monkey D. Luffy es el capitán de los Piratas del Sombrero de Paja. " +
+"Comió la Fruta Gomu Gomu y se convirtió en hombre de goma. " +
+"Sueña con encontrar el One Piece y ser el Rey de los Piratas. " +
+"Es impulsivo, despreocupado y extremadamente leal a sus amigos. " +
+"Sus momentos clave incluyen declarar la guerra al Gobierno Mundial " +
+"en Enies Lobby para rescatar a Robin, y despertar el Gear 5 contra Kaido."     }
+
+        if (personaje === "zoro") {
+            modalNombre.textContent = "Roronoa Zoro";
+            modalImagen.src = "img/zoro.jpg";
+            modalHistoria.textContent =
+"Roronoa Zoro es el espadachín de los Piratas del Sombrero de Paja. " +
+"Usa tres katanas y sueña con ser el mejor espadachín del mundo. " +
+"Es serio, leal y de gran sentido del honor. " +
+"Su momento más icónico es en Thriller Bark, donde recibe todo el dolor " +
+"de Luffy de parte de Kuma y, ensangrentado, dice: 'No ha pasado nada'."        }
+
+        if (personaje === "nami") {
+            modalNombre.textContent = "Nami";
+            modalImagen.src = "img/nami.jpg";
+            modalHistoria.textContent =
+"Nami es la navegante de los Piratas del Sombrero de Paja. " +
+"Es experta en clima y mapas, inicialmente ladrona. " +
+"Su historia gira en torno a liberar su pueblo de Arlong. " +
+"El momento en que pide ayuda a Luffy y él le pone su sombrero " +
+"antes de ir a pelear es uno de los más recordados."        }
+        if (personaje === "ace") {
+            modalNombre.textContent = "Portgas D. Ace";
+            modalImagen.src = "img/ace.jpg";
+            modalHistoria.textContent =
+"Portgas D. Ace es el comandante de la segunda división de los Piratas de Barbablanca. " +
+"Es hijo biológico de Gol D. Roger y hermano jurado de Luffy y Sabo. " +
+"Comió la Fruta Mera Mera y utiliza principalmente el fuego para combatir. " +
+"Su sueño es hacer que Barbablanca sea el Rey de los Piratas. " +
+"Su momento más icónico es morir protegiendo a Luffy en Marineford, " +
+"tras ser traspasado por Akainu."
+
+        }
+        if (personaje === "sanji") {
+            modalNombre.textContent = "Vinsmoke Sanji";
+            modalImagen.src = "img/sanji.jpg";
+            modalHistoria.textContent =
+"Sanji es el cocinero de los Piratas del Sombrero de Paja. " +
+"Sueña con encontrar el All Blue. " +
+"Fue rescatado por Zeff y tiene una estricta ética sobre no desperdiciar comida. " +
+"Su arco en Whole Cake Island revela su pasado con la familia Vinsmoke, " +
+"pero decide volver con Luffy."      
+  }
+      if (personaje === "chopper") {
+            modalNombre.textContent = "Tony Tony Chopper";
+            modalImagen.src = "img/chopper.jpg";
+            modalHistoria.textContent =
+"Tony Tony Chopper es el médico de los Piratas del Sombrero de Paja. " +
+"Es un reno que comió la Fruta Hito Hito y puede transformarse en humano. " +
+"Es inocente y cariñoso, y sueña con curar cualquier enfermedad." 
+        }
+
+
+
+        modal.style.display = "flex";
+    });
+
+});
+
+
+cerrar.addEventListener("click", () => {
+    modal.style.display = "none";
+});
+
+
+modal.addEventListener("click", (e) => {
+
+    if (e.target === modal) {
+        modal.style.display = "none";
+    }
+
+});
+
+</script>
+
+
+     </section>
+    </main>
+</body>
+</html>

@@ -1,0 +1,261 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>One Piece</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="navbar">
+
+    <!-- Logo y eslogan a la izquierda -->
+    <div class="nav-left">
+        <div class="logo-container">
+            <div class="straw-hat"></div>
+        </div>
+
+        <span class="slogan">
+            ¡Vamos a ser<br>
+            el Rey de los Piratas! ⚓
+        </span>
+
+    </div>
+
+
+    <!-- Enlaces de navegación -->
+    <nav class="nav-links">
+
+        <a href="index.html" class="active">Inicio</a>
+        <a href="personajes.html">Personajes</a>
+        <a href="manga-anime.html">Manga / Anime</a>
+        <a href="arcos.html">Arcos</a>
+        <a href="galeria.html">Galería</a>
+        <a href="mensaje.html">Mensaje</a>
+        <a href="juegos.html">Juegos</a>
+        <a href="para-ti.html">Para ti</a>
+
+    </nav>
+
+
+    <!-- Buscador -->
+    <div class="nav-right">
+
+        <div class="search-box">
+
+            <span class="search-icon">🔍</span>
+
+            <input type="text" placeholder="Buscar...">
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<div class="main-layout">
+
+    <main class="content-column">
+
+        <!-- =========================
+             BANNER
+        ========================== -->
+
+        <section class="banner-section">
+
+            <div class="banner-content">
+
+                <h1>
+                    No importa<br>
+                    cuán difícil sea el camino...<br>
+                    siempre seguiré<br>
+                    mirando hacia el mar.
+                </h1>
+
+                <p class="banner-author">
+                    - Monkey D. Luffy
+                </p>
+
+            </div>
+
+
+            <div class="banner-image">
+
+                <img src="img/grupo.jpg" alt="Tripulación One Piece">
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             PERSONAJES
+        ========================== -->
+
+        <section class="characters-section">
+
+            <div class="section-header">
+
+                <span class="skull-mini">🏴‍☠️</span>
+
+                <div>
+
+                    <h2>Mis Personajes Favoritos</h2>
+
+                    <p>
+                        ¡Conoce a los personajes más icónicos de One Piece!
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- TARJETAS -->
+
+            <div class="cards-grid">
+
+
+                <!-- LUFFY -->
+
+                <div class="character-card" data-personaje="luffy">
+
+                    <img src="img/luffy.jpg" alt="Luffy">
+
+                    <div class="card-info">
+
+                        <h3>Luffy</h3>
+
+                        <p>
+                            "¡Yo seré el Rey de los Piratas!"
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ZORO -->
+
+                <div class="character-card" data-personaje="zoro">
+
+                    <img src="img/zoro.jpg" alt="Zoro">
+
+                    <div class="card-info">
+
+                        <h3>Zoro</h3>
+
+                        <p>
+                            "¡Seré el mejor espadachín del mundo!"
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- NAMI -->
+
+                <div class="character-card" data-personaje="nami">
+
+                    <img src="img/nami.jpg" alt="Nami">
+
+                    <div class="card-info">
+
+                        <h3>Nami</h3>
+
+                        <p>
+                            "¡Quiero dibujar un mapa del mundo!"
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- SANJI -->
+
+                <div class="character-card" data-personaje="sanji">
+
+                    <img src="img/sanji.jpg" alt="Sanji">
+
+                    <div class="card-info">
+
+                        <h3>Sanji</h3>
+
+                        <p>
+                            "¡Encontraré el All Blue!"
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+
+<!-- =========================
+     MODAL DEL PERSONAJE
+========================== -->
+
+<div id="modal" class="modal">
+
+    <div class="modal-content">
+
+
+        <!-- BOTÓN CERRAR -->
+
+        <button id="cerrar-modal" class="cerrar">
+            &times;
+        </button>
+
+
+        <!-- IMAGEN -->
+
+        <img
+            id="modal-imagen"
+            src=""
+            alt="Personaje"
+        >
+
+
+        <!-- INFORMACIÓN -->
+
+        <div class="modal-info">
+
+            <h2 id="modal-nombre"></h2>
+
+            <p id="modal-historia"></p>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- JavaScript -->
+
+<script src="personajes.js"></script>
+
+</body>
+
+</html>
+
